@@ -68,8 +68,7 @@ between 0 and 2. */
 console.log('Task 2:');
 function inning(/*Code Here*/){
 
-    let randomNamber = Math.floor(Math.random()*2);
-     return randomNamber;
+  return Math.floor(Math.random()*2);     
 }
 console.log(inning());
 
@@ -88,7 +87,7 @@ finalScore(inning, 9) might return:
 }
 
 */ 
-console.log('Task 31:');
+console.log('Task 3:');
 function finalScore(func, num){
   let finalScore1 = 0;
   let finalScore2 = 0;
@@ -101,7 +100,6 @@ function finalScore(func, num){
     Away: finalScore2
   }
 }
-
 console.log(finalScore(inning, 9));
 
 
@@ -126,8 +124,16 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+console.log('Task 4:');
+function scoreboard(func1, num1) {
+  let finalSc1 = 0;
+  let finalSc2 = 0;
+ for (let i = 1; i < num1 + 1; i++){
+    finalSc1 = finalSc1 + func1();
+    finalSc2 = finalSc2 + func1();
+    console.log(i,' inning: ', finalSc1, ' - ', finalSc2);
+ }
+  return `Final Score: ${finalSc1} - ${finalSc2} `;
 }
-
+console.log (scoreboard(inning, 9));
 
