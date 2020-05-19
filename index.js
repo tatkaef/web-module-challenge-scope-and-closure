@@ -28,10 +28,18 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ *    counter1 - variable which determined by function.
+ *    counter2 - function.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ *    
+ *    counter1    
+ *     
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * 
+ *    counter1 - when you need always start count from 0.
+ *    counter2 - when you need that count is grow.
 */
 
 // counter1 code
@@ -54,17 +62,21 @@ function counter2() {
 
 /* Task 2: inning() 
 
-Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
+Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number 
+between 0 and 2. */
 
+console.log('Task 2:');
 function inning(/*Code Here*/){
 
-    /*Code Here*/
-
+  return Math.floor(Math.random()*2);     
 }
+console.log(inning());
+
 
 /* Task 3: finalScore()
 
-Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
+Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and 
+returns the final score of the game in the form of an object.
 
 For example, 
 
@@ -75,12 +87,21 @@ finalScore(inning, 9) might return:
 }
 
 */ 
-
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+console.log('Task 3:');
+function finalScore(func, num){
+  let finalScore1 = 0;
+  let finalScore2 = 0;
+ for (let i = 0; i < num; i++){
+    finalScore1 = finalScore1 + func();
+    finalScore2 = finalScore2 + func();
+ }
+  return {
+    Home: finalScore1,
+    Away: finalScore2
+  }
 }
+console.log(finalScore(inning, 9));
+
 
 /* Task 4: 
 
@@ -103,8 +124,16 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+console.log('Task 4:');
+function scoreboard(func1, num1) {
+  let finalSc1 = 0;
+  let finalSc2 = 0;
+ for (let i = 1; i < num1 + 1; i++){
+    finalSc1 = finalSc1 + func1();
+    finalSc2 = finalSc2 + func1();
+    console.log(i,' inning: ', finalSc1, ' - ', finalSc2);
+ }
+  return `Final Score: ${finalSc1} - ${finalSc2} `;
 }
-
+console.log (scoreboard(inning, 9));
 
